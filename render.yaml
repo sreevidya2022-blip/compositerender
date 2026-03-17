@@ -1,12 +1,17 @@
-services:
-  - type: web
-    name: compositelab
-    env: python
-    plan: free
-    buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT
-    envVars:
-      - key: GROQ_API_KEY
-        scope: build_and_runtime
-        fromDatabase: false
-    staticPublishPath: .
+[build]
+  command = "pip install -r requirements.txt"
+  functions = "netlify/functions"
+  publish = "netlify-dist"
+
+[env]
+  PYTHON_VERSION = "3.11.9"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api:splat"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
