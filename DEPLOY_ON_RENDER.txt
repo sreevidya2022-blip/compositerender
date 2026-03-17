@@ -1,0 +1,54 @@
+====================================
+COMPOSITELAB - RENDER DEPLOYMENT
+====================================
+
+NO MANUAL CONFIGURATION NEEDED!
+Just 3 clicks and your app is live.
+
+STEP 1: PUSH TO GITHUB
+=====================
+1. Extract this zip
+2. Open terminal in folder
+3. Run:
+   git init
+   git add .
+   git commit -m "CompositeLab Render"
+   git remote add origin https://github.com/YOUR_USERNAME/your-repo.git
+   git push -u origin main
+
+STEP 2: DEPLOY ON RENDER
+=======================
+1. Go to render.com
+2. Sign up (free)
+3. Click "New +"
+4. Select "Web Service"
+5. Connect GitHub
+6. Select your repo
+7. Render automatically reads render.yaml
+8. You'll see build starting
+
+STEP 3: ADD API KEY
+==================
+During deployment:
+- Environment Variables
+- Click "Add Environment Variable"
+- Key: GROQ_API_KEY
+- Value: gsk_your_key_from_console_groq_com
+- Click "Deploy"
+
+WAIT 2-3 MINUTES
+===============
+Render will build and deploy.
+When done, you get your live URL!
+
+YOUR APP URL:
+https://your-app-name.onrender.com
+
+SHARE IT!
+========
+Send URL to your team. It's live! 🚀
+
+====================================
+NO MANUAL CONFIG NEEDED
+Everything is automated!
+====================================

@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: compositelab
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT
+    envVars:
+      - key: GROQ_API_KEY
+        scope: build_and_runtime
+        fromDatabase: false
+    staticPublishPath: .
