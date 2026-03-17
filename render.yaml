@@ -1,17 +1,24 @@
-[build]
-  command = "pip install -r requirements.txt"
-  functions = "netlify/functions"
-  publish = "netlify-dist"
+services:
+  - type: web
+    name: compositelab
+    env: python
+    plan: free
+    pythonVersion: 3.11.9
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT
+    envVars:
+      - key: GROQ_API_KEY
+        scope: build_and_runtime
+```
 
-[env]
-  PYTHON_VERSION = "3.11.9"
+5. Click **"Commit changes"**
 
-[[redirects]]
-  from = "/api/*"
-  to = "/.netlify/functions/api:splat"
-  status = 200
+---
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+## 🎯 **OR SIMPLEST: Use .python-version file**
+
+Create new file called `.python-version`:
+
+**Content (exactly this):**
+```
+3.11.9
